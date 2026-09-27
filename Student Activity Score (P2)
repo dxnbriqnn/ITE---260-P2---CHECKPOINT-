@@ -1,0 +1,46 @@
+#Function to calculate the average of a student's three activity score.
+def calculate_average(score1, score2, score3):
+    average = (score1 + score2 + score3) / 3
+    return average
+
+
+# Ask the user how many students are there.
+number_of_students = int(input("How many students? "))
+
+# I used the "if" "else" function so I can sure that it has exact number of students. 
+if number_of_students < 3:
+    print("Error! enter at least 3 students!")
+else:
+    # If you see I use loop here because instead of repeating again and again. loop can help me to ask the students again and again without repeating the code.
+    for student in range(number_of_students):
+        print("\nStudent", student + 1)
+
+        # Here's where I get the student's name and their three activity scores from the user. 
+        name = input("Enter Your Name: ")
+
+        activity1 = int(input("Activity 1 Score: "))
+        activity2 = int(input("Activity 2 Score: "))
+        activity3 = int(input("Activity 3 Score: "))
+
+        #As you can see instead of calculating all the data manually, I call the function that I encode earlier. Further explanation, why I encode "activity1" instead of "score1"? because as you can see the word "score1" is called parameters. When I call the function I encode "activity1" to be the "score1" to the function. So to make it short, the value of "score1" are "activity1", "score2" are "activity2" and lastly, "score3" are "activity3"
+        average = calculate_average(activity1, activity2, activity3)
+        
+     # Now here's where the game begin, in this code is when python decide if the status lf a students are "Excellent", "Very Good", "Passed", or "Failed"
+        if average >= 90:
+            status = "Excellent"
+        elif average >= 80:
+            status = "Very Good"
+        elif average >= 75:
+            status = "Passed"
+        else:
+            status = "Failed"
+
+     # Display the student's full results. 
+        print("\n--- Student Result ---")
+        print("Name:", name)
+        print("Activity 1:", activity1)
+        print("Activity 2:", activity2)
+        print("Activity 3:", activity3)
+        print("Average:", round(average, 2))
+        # thinking about this? well here's the explanation, in this code instead of just puting average it's has "round(average,2))". the word "round" is a built-in Python function that rounds a number. While the "2" is to tell python to 2 desimal places. So instead of 76.66666... python make it 76.67.
+        print("Status:", status)
